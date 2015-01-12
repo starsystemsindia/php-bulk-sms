@@ -110,7 +110,7 @@ class BulkSmsService
 	public function parseResponse($response)
 	{
 		if ($response->code !== '200 OK') {
-			throw new BulkSmsException('BulkSMS API responded with HTTP status code ' . $response->code);
+			throw new BulkSmsException('BulkSMS API responded with HTTP status code ' . $response->code, $response->code);
 		}
 
 		$parts = explode('|', $response->body);
@@ -127,7 +127,7 @@ class BulkSmsService
 			$message = array_key_exists($code, static::$statusMessages)
 				? static::$statusMessages[$code]
 				: $parts[1];
-			throw new BulkSmsException('BulkSMS API responded with code: ' . $code . ' - ' . $message);
+			throw new BulkSmsException('BulkSMS API responded with code: ' . $code . ' - ' . $message, $code);
 		}
 	}
 

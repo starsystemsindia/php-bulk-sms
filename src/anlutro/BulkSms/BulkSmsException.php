@@ -9,4 +9,19 @@
 
 namespace anlutro\BulkSms;
 
-class BulkSmsException extends \Exception {}
+class BulkSmsException extends \Exception {
+    private $code;
+
+    public function __construct($message) {
+        parent::__construct($message);
+    }
+
+    public function __construct($message, $code) {
+        parent::__construct($message);
+        $this->code = $code;
+    }
+
+    public function getStatusCode() {
+        return $this->code;
+    }
+}

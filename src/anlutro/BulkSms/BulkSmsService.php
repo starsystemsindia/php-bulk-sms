@@ -80,7 +80,7 @@ class BulkSmsService
 
 		$sender->setMessage($msg);
 
-		return $this->parseResponse($sender->send());
+		return array($this->parseResponse($sender->send()), $msg->getConcatParts());
 	}
 
 	/**

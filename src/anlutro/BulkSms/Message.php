@@ -42,6 +42,10 @@ class Message
 	 */
 	protected $concatLimit = 140;
 
+        protected $sourceId = null;
+
+        protected $sender = null;
+
 	/**
 	 * Set the recipient.
 	 *
@@ -52,6 +56,24 @@ class Message
 		$this->recipient = $this->parseNumber($recipient);
 		return $this;
 	}
+
+        public function setSourceId($sourceId) {
+            $this->sourceId = $sourceId;
+            return $this;
+        }
+
+        public function getSourceId() {
+            return $this->sourceId;    
+        }
+
+        public function setSender($sender) {
+            $this->sender = $sender;
+            return $this;
+        }
+
+        public function getSender() {
+            return $this->sender;    
+        }
 
 	/**
 	 * Set the message.

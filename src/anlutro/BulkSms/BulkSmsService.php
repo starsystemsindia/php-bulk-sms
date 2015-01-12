@@ -67,14 +67,16 @@ class BulkSmsService
 	 *
 	 * @param  string $recipient
 	 * @param  string $message
+         * @param string  $sourceId
+         * @param string  $sender
 	 *
 	 * @return mixed
 	 */
-	public function sendMessage($recipient, $message)
+	public function sendMessage($recipient, $message, $sourceId, $sender)
 	{
 		$sender = $this->createMessageSender();
 
-		$msg = $this->createMessage($recipient, $message);
+		$msg = $this->createMessage($recipient, $message, $sourceId, $sender);
 
 		$sender->setMessage($msg);
 
@@ -139,12 +141,20 @@ class BulkSmsService
 	 *
 	 * @return anlutro\BulkSms\Message
 	 */
-	protected function createMessage($recipient, $message)
+	protected function createMessage($recipient, $message, $sourceId = NULL, $sender = NULL)
 	{
 		$msg = new Message;
 		
 		$msg->recipient($recipient);
 		$msg->message($message);
+
+                if (! is_null($sourceId)) {
+                    $msg->setSourceId($sourceId);
+                }
+		
+                if (! is_null($sender)) {
+                    $msg->setSender($sender);
+                }
 		
 		return $msg;
 	}

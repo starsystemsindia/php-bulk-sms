@@ -10,11 +10,7 @@
 namespace anlutro\BulkSms;
 
 class BulkSmsException extends \Exception {
-    private $code;
-
-    public function __construct($message) {
-        parent::__construct($message);
-    }
+    protected $code;
 
     public function __construct($message, $code) {
         parent::__construct($message);

@@ -182,9 +182,9 @@ class Message
 
 		// phone number should be 11 or 10 characters at this point
 		$len = strlen($number);
-		if ($len > 11 || $len < 10) {
-			throw new \InvalidArgumentException("Invalid SMS recipient: $number");
-		}
+		//if ($len > 11 || $len < 10) {
+		//	throw new \InvalidArgumentException("Invalid SMS recipient: $number");
+		//}
 
 		return $number;
 	}

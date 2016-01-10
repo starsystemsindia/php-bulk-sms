@@ -74,13 +74,13 @@ class BulkSmsService
 	 */
 	public function sendMessage($recipient, $message, $sourceId, $sender)
 	{
-		$sender = $this->createMessageSender();
+		$smssender = $this->createMessageSender();
 
 		$msg = $this->createMessage($recipient, $message, $sourceId, $sender);
 
-		$sender->setMessage($msg);
+		$smssender->setMessage($msg);
 
-		return array($this->parseResponse($sender->send()), $msg->getConcatParts());
+		return array($this->parseResponse($smssender->send()), $msg->getConcatParts());
 	}
 
 	/**

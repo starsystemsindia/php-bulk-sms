@@ -68,16 +68,23 @@ class Single
 	 */
 	public function send()
 	{
-		$data = [
-			'username' => $this->username,
-			'password' => $this->password,
-			'message' => $this->message->getMessage(),
-			'msisdn' => $this->message->getRecipient(),
-                        'source_id' => $this->message->getSourceId(),
-                        'sender' => $this->message->getSender(),
-		];
+        $data = [
+            'username' => $this->username,
+            'password' => $this->password,
+            'message' => $this->message->getMessage(),
+            'msisdn' => $this->message->getRecipient(),
+            'source_id' => $this->message->getSourceId(),
+            'repliable' => $this->message->getRepliable()
+        ];
 
-		$concat = $this->message->getConcatParts();
+        if (!is_null($this->message->getSender())) {
+            $data['sender'] = $this->message->getSender();
+        }
+
+
+
+
+        $concat = $this->message->getConcatParts();
 
 		if ($concat > 1) {
 			$data['allow_concat_text_sms'] = 1;

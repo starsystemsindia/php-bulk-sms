@@ -72,11 +72,11 @@ class BulkSmsService
 	 *
 	 * @return mixed
 	 */
-	public function sendMessage($recipient, $message, $sourceId, $sender)
+	public function sendMessage($recipient, $message, $sourceId, $sender, $repliable=false)
 	{
 		$smssender = $this->createMessageSender();
 
-		$msg = $this->createMessage($recipient, $message, $sourceId, $sender);
+		$msg = $this->createMessage($recipient, $message, $sourceId, $sender, $repliable);
 
 		$smssender->setMessage($msg);
 

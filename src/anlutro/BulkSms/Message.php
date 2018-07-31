@@ -42,9 +42,11 @@ class Message
 	 */
 	protected $concatLimit = 140;
 
-        protected $sourceId = null;
+    protected $sourceId = null;
 
-        protected $sender = null;
+    protected $sender = null;
+
+    protected $repliable = false;
 
 	/**
 	 * Set the recipient.
@@ -57,24 +59,39 @@ class Message
 		return $this;
 	}
 
-        public function setSourceId($sourceId) {
-            $this->sourceId = $sourceId;
-            return $this;
-        }
+    public function setSourceId($sourceId)
+    {
+        $this->sourceId = $sourceId;
+        return $this;
+    }
 
-        public function getSourceId() {
-            return $this->sourceId;    
-        }
+    public function getSourceId()
+    {
+        return $this->sourceId;
+    }
 
-        public function setSender($sender) {
-            $this->sender = $sender;
-            return $this;
-        }
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+        return $this;
+    }
 
-        public function getSender() {
-            return $this->sender;    
-        }
+    public function getSender()
+    {
+        return $this->sender;
+    }
 
+
+    public function setRepliable($repliable)
+    {
+        $this->repliable = $repliable;
+        return $this;
+    }
+
+    public function getRepliable()
+    {
+        return $this->repliable;
+    }
 	/**
 	 * Set the message.
 	 *

@@ -22,7 +22,7 @@ class Single
 	 *
 	 * @var string
 	 */
-	protected $url = 'http://www.bulksms.co.uk:5567/eapi/submission/send_sms/2/2.0';
+	protected $url = 'https://api-legacy2.bulksms.com/eapi/submission/send_sms/2/2.0';
 
 	/**
 	 * The cURL instance.
